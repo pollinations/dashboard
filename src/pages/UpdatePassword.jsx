@@ -1,13 +1,14 @@
 import useLogin from '../hooks/forms/useLogin'
 import SimpleForm from "../components/SimpleForm";
 import { BackGroundImage } from '../styles/global';
+import useUpdatePassword from '../hooks/forms/usePasswordReset';
 
-export default function LoginPage(){
+export default function UpdatePassword(){
 
-const LoginProps = useLogin()
+const UpdatePasswordProps = useUpdatePassword()
 
 return <>
-    <SimpleForm {...LoginProps} title='SignIn'/>
+    <SimpleForm {...UpdatePasswordProps} title='Update Password'/>
     <BackGroundImage 
         position='fixed'
         src='/bg_hero_landing.png'

@@ -4,16 +4,21 @@ import { getCurrentUser, signOut, getUser } from '../supabase/user'
 
 const AuthContext = React.createContext()
 
+
+
 function AuthProvider({ children }) {
 
     const [ user, setUser ] = React.useState(null)
 
     React.useEffect(() => {
-        // Check active sessions and sets the user
-        const session = supabase.auth.getSession()
-    
-        setUser(session?.user ?? null)
-    
+
+
+        async function fetchPreviousSession(callback){
+          const { data } = await supabase.auth.getSession()
+          setUser(data?.session?.user ?? null)
+        }
+        fetchPreviousSession()
+
         // Listen for changes on auth state (logged in, signed out, etc.)
         const { data: listener } = supabase.auth.onAuthStateChange(
           async (event, session) => {
@@ -21,12 +26,14 @@ function AuthProvider({ children }) {
           }
         )
     
-        return () => {
-          listener?.unsubscribe()
+        // console.log(session)
+        if (listener) return () => {
+          // listener?.unsubscribe()
         }
       }, [])
 
-    async function handleSignOut() {
+    async function handleSignOut(e) {
+        // e.preventDefault()
         await signOut()
         setUser(null)
     }

@@ -9,11 +9,11 @@ import { MOBILE_BREAKPOINT } from "../styles/global"
 import { CloseOutlined } from '@mui/icons-material'
 import MobileMenuIcon from '/menuIcon.svg'
 import Logo from './Logo'
-// import NavigationItems from "./organisms/NavigationItems"
+import NavigationItems from "./NavigationItems"
 import { SocialLinks } from './Social'
 import { MAIN_NAV_ROUTES, USER_NAV_ROUTES } from '../routes/publicRoutes'
 // import { useAuth } from '../hooks/useAuth'
-// import LoggedUser from './organisms/LoggedUser'
+import LoggedUser from './LoggedUser'
 
 
 
@@ -26,8 +26,7 @@ const TopBar = ({ navRoutes }) => {
 
   return <OuterContainer>
       <TopContainer>
-          {/* <UserNav drawerState={drawerState} navRoutes={USER_NAV_ROUTES}/> */}
-          <PublicNav drawerState={drawerState} navRoutes={MAIN_NAV_ROUTES}/>
+          <UserNav drawerState={drawerState} navRoutes={USER_NAV_ROUTES}/>
       </TopContainer>
 
       <MobileMenu navRoutes={MAIN_NAV_ROUTES} drawerState={drawerState}/>
@@ -71,7 +70,7 @@ const UserNav = ({ navRoutes, drawerState }) => <NavBarStyle>
     <Logo size='150px' small='150px' margin='0' />  
   </NavLink>
   
-  {/* <LoggedUser /> */}
+  <LoggedUser />
 
 <MenuButton>
   <IconButton onClick={()=>drawerState[1](true)} >
@@ -88,7 +87,7 @@ const MobileMenu = ({drawerState, navRoutes}) => <TemporaryDrawer drawerState={d
       </IconButton>
     </MobileCloseIconStyle>
 
-    {/* <NavigationItems column navRoutes={navRoutes} margin='5em 0 0 0' gap='2em'/> */}
+    <NavigationItems column navRoutes={navRoutes} margin='5em 0 0 0' gap='2em'/>
     <div >
       <CTAStyle>
           Let's talk 

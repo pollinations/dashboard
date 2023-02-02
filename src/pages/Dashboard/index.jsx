@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { BackGroundImage, Colors, MOBILE_BREAKPOINT } from '../../styles/global';
 import { Outlet, NavLink } from 'react-router-dom';
+import BgImgSrc from '/bg_hero_landing.png'
 
 const AdminRoutes = [
   {
@@ -32,18 +33,18 @@ const AdminRoutes = [
   }
 ]
 
-
 const NavLinkWithChildren = (route) => {
 
+  const { to, label, children } = route;
 
   return <>
     <NavLink
-      to={route.to} 
-      children={route.label} 
+      to={to} 
+      children={label} 
       style={({isActive})=> ({ color: isActive ? Colors.lime : Colors.offwhite})}
     />
     {
-      route.children.map( subroute => <SubRouteStyle>
+      children.map( subroute => <SubRouteStyle>
         <NavLink key={subroute.id}
           to={subroute.to} 
           children={subroute.label} 
@@ -74,7 +75,8 @@ a{
 `
 
 export default function AdminArea(){
-    return <Style>
+    return <>
+    <Style>
   <ContainerStyle>
     <NavStyle>
       {
@@ -94,12 +96,14 @@ export default function AdminArea(){
     </Container>
   </ContainerStyle>
   <BackGroundImage 
-    src='/BG7.png'
+    src={BgImgSrc} 
     top='auto'
     zIndex='-1' 
     objectPosition='0 30%'
     alt="hero_bg_overlay" />
   </Style>
+
+  </>
 }
 const NavStyle = styled.nav`
 display: flex;

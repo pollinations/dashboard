@@ -57,3 +57,14 @@ export async function signUpwithEmail(user) {
       password: user?.password,
     })
 }
+
+export async function updatePassword(new_password) {
+
+    if(!new_password) return ({
+        error: 'missing new_password'
+    })
+
+    return await supabase.auth.updateUser({
+        password: new_password
+    })  
+}

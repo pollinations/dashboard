@@ -2,8 +2,6 @@ import {
     Button, TextField 
 } from "@mui/material";
 import styled from '@emotion/styled'
-import { BackGroundImage } from "../styles/global";
-import whyBG from '/BG7.png'
 
 export default function SimpleForm(props){
 
@@ -14,18 +12,12 @@ return <Style>
         <h2 children={title} style={{ margin: 0 }} />
         <form onSubmit={onSubmit}>
             {
-                fields.map( field => <TextField {...field}/> )
+                fields.map( field => <TextField key={field.label} {...field}/> )
             }
             {err && <ErrorFeedback children={err.message}/>}
             <Button children='Submit' type='submit'/>
         </form>
     </ListStyle>
-    <BackGroundImage 
-    src={whyBG} 
-    top='auto'
-    zIndex='-1' 
-    objectPosition='0 30%'
-    alt="hero_bg_overlay" />
 </Style>
 }
 
