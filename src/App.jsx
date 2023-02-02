@@ -21,7 +21,8 @@ function App() {
   const { pathname } = useLocation();
 
 
-  if (user && (pathname === '/passwordupdate')) return <Routes>
+
+  if (pathname === '/passwordupdate') return <Routes>
     <Route exact path='/passwordupdate' element={<UpdatePassword/>}/>
   </Routes>
 

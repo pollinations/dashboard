@@ -19,7 +19,7 @@ export default function useUpdatePassword() {
     console.log(data, error)
     if (data.user !== null) navigate('/d');
     // Fail
-    if (error?.message) setErr(error);
+    if (error?.message) navigate('/d') // setErr(error);
 }
 
   return {

@@ -140,7 +140,7 @@ border-radius: 20px;
 padding: 3em ;
 `;
 const Style = styled.div`
-width: 100%;
+width: 100vw;
 height: 100%;
 padding: 0em;
 margin: 0;
