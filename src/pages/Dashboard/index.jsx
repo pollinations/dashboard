@@ -44,8 +44,8 @@ const NavLinkWithChildren = (route) => {
       style={({isActive})=> ({ color: isActive ? Colors.lime : Colors.offwhite})}
     />
     {
-      children.map( subroute => <SubRouteStyle>
-        <NavLink key={subroute.id}
+      children.map( subroute => <SubRouteStyle key={subroute.to}>
+        <NavLink 
           to={subroute.to} 
           children={subroute.label} 
           style={({isActive})=> ({ color: isActive ? Colors.lime : Colors.offwhite})}
@@ -76,33 +76,30 @@ a{
 
 export default function AdminArea(){
     return <>
-    <Style>
   <ContainerStyle>
     <NavStyle>
       {
         AdminRoutes.map( route => 
           !route.children ?
-          <NavLink key={route.id}
+          <NavLink 
+            key={route.to}
             to={route.to} 
             children={route.label} 
             style={({isActive})=> ({ color: isActive ? Colors.lime : Colors.offwhite})}
           />
           :
-          <NavLinkWithChildren {...route}/>
+          <NavLinkWithChildren key={route.to} {...route}/>
       )}
     </NavStyle>
     <Container>
       <Outlet/>
     </Container>
   </ContainerStyle>
-  <BackGroundImage 
-    src={BgImgSrc} 
-    top='auto'
-    zIndex='-1' 
-    objectPosition='0 30%'
-    alt="hero_bg_overlay" />
-  </Style>
-
+  <BackGroundImage
+    src='/BG7.png'
+    zIndex='-2'
+    position='fixed'
+  />
   </>
 }
 const NavStyle = styled.nav`
@@ -128,40 +125,33 @@ a{
 
 `
 const Container = styled.div`
-width: 100%;
-
+grid-column: 3/12;
 position: relative;
 
 background: linear-gradient(90.41deg, rgba(255, 255, 255, 0.17) 1.53%, rgba(255, 255, 255, 0.1) 98.72%);
-box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.17);
-backdrop-filter: blur(15px);
-border-radius: 20px;
-
+border-radius: 4px;
+border: 1px solid hsla(0,0%,100%,0);
 padding: 3em ;
-`;
-const Style = styled.div`
-width: 100vw;
-height: 100%;
-padding: 0em;
-margin: 0;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-justify-content: flex-start;
 `;
 
 const ContainerStyle = styled.div`
 display: grid;
-grid-template-columns: 1fr 6fr 1fr;
-gap: 3em;
+grid-template-rows: 1fr;
+grid-template-columns: repeat(12,1fr);
+gap: 2em;
+
+
+// width: 100%;
+height: 100%;
+margin-top: 3em;
+padding: 2em;
+
+
+
+
 @media (max-width: ${MOBILE_BREAKPOINT}) {
   gap: 1em;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
-
-width: 100%;
-height: 100%;
-margin-top: 3em;
-padding: 2em;
 `

@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 
 import TopBar from './components/NavBar'
 
-import LoginPage from './pages/Login'
-import SignUpPage from './pages/SignUp'
+import LoginPage from './pages/Forms/Login'
+import SignUpPage from './pages/Forms/SignUp'
 
 import AdminArea from './pages/Dashboard'
 import Chart from './pages/Dashboard/chart'
@@ -13,23 +13,29 @@ import Billing from './pages/Dashboard/billing'
 import Token from './pages/Dashboard/token'
 import BillingHistory from './pages/Dashboard/billing_history'
 import BillingPreferences from './pages/Dashboard/billing_preferences'
-import UpdatePassword from './pages/UpdatePassword'
+import UpdatePassword from './pages/Forms/UpdatePassword'
+import FormsPage from './pages/Forms'
+import { useQuery } from '@tanstack/react-query'
+import React from 'react'
+import { fetchPreviousSession } from './supabase/user'
+
+
+
 
 function App() {
 
-  const { user } = useAuth();
+  const { user } = useAuth()
+
   const { pathname } = useLocation();
 
-
-
-  if (pathname === '/passwordupdate') return <Routes>
-    <Route exact path='/passwordupdate' element={<UpdatePassword/>}/>
-  </Routes>
+  if (pathname === '/passwordupdate') return <UpdatePassword/>
 
 
   if (!user) return <Routes>
-    <Route exact path='/' element={<LoginPage/>}/>
-    <Route exact path='signuptest' element={<SignUpPage/>}/>
+    <Route exact path='/' element={<FormsPage/>}>
+      <Route exact path='/' element={<LoginPage/>}/>
+      <Route exact path='/signuptest' element={<SignUpPage/>}/>
+    </Route>
     <Route path='*' element={<Navigate to='/'/>}/>
   </Routes>
 
@@ -46,6 +52,7 @@ function App() {
         </Route>
         <Route path='token' element={<Token />}/>
       </Route>
+      <Route path='*' element={<Navigate to='/'/>}/>
 
     </Routes>
     
@@ -56,7 +63,6 @@ export default App
 
 
 const Wrapper = styled.div`
-width: 100%;
-max-width: 100vw;
 min-height: 100vh;
+border-bo
 `

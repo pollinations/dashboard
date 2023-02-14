@@ -2,16 +2,17 @@ import supabase from "./client"
 
 export const getCurrentUser = async () =>{    
     const res = await supabase.auth.getSession()
-    console.log(res)
     return res
 }
 export async function getUser(){
      return await supabase.auth.getUser()
 }
 
-export const signOut = () => supabase.auth.signOut((err) => {
+export async function signOut(){
+    return await supabase.auth.signOut((err) => {
     console.error(err)
-})
+    })
+}
 
 // Ex: handleSocialLogin("facebook", "https://pollinations.ai")
 export async function handleSocialLogin(provider, redirectTo = "localhost:3000/") {
@@ -34,7 +35,7 @@ export async function signInWithEmail(user) {
     if(!user.password) return ({
         error: 'missing password'
     })
-
+    
     return await supabase.auth.signInWithPassword({
       email: user?.username,
       password: user?.password,
@@ -68,3 +69,16 @@ export async function updatePassword(new_password) {
         password: new_password
     })  
 }
+
+export async function fetchUserData(table, column) {
+    return await supabase
+        .from(table)
+        .select(column)
+}
+
+export async function fetchPreviousSession(){
+    return await supabase.auth.getSession()
+}
+
+
+

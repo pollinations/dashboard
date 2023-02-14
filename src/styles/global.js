@@ -66,6 +66,19 @@ transform: ${props => props.transform || ''};
 object-fit: cover;
 object-position: ${props => props.objectPosition || ''};
 `
+export const BackGroundVideo = styled.video`
+position: ${props => props.position ? props.position : 'absolute'};
+width: 100%;
+height: 100%;
+top: ${props => props.top || 0};
+left: 0;
+opacity: ${props => props.opacity || 1};
+z-index: ${props => props.zIndex || 0};
+mix-blend-mode: ${props => props.blend || 'normal'};
+transform: ${props => props.transform || ''};
+object-fit: cover;
+object-position: ${props => props.objectPosition || ''};
+`
 export const Headline = styled.p`
 
 font-style: normal;

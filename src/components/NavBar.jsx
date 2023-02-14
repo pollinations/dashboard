@@ -143,7 +143,6 @@ const TopContainer = styled.div`
   position: absolute;
   z-index: 1;
   width: 100%;
-  padding: 0 30px;
   display: flex;
   justify-content: center;
   @media (max-width: ${MOBILE_BREAKPOINT}){

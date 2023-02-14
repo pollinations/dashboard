@@ -13,6 +13,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  box-sizing: border-box;
 }
 
 a {
@@ -29,6 +31,8 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
+
+  box-sizing: border-box;
 
   display: flex;
   justify-content: center;

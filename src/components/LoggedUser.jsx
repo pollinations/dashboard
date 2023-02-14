@@ -22,6 +22,11 @@ const LoggedUser = ({ user }) => {
 
             <MenuItem onClick={() => {
                 setAnchorEl(null)
+                navigate("/passwordupdate")
+            }}> Password Update </MenuItem>
+
+            <MenuItem onClick={() => {
+                setAnchorEl(null)
                 handleSignOut()
             }}> Logout </MenuItem>
 
