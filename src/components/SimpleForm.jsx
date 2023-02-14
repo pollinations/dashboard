@@ -34,6 +34,9 @@ return <Style>
                 <Button children='Continue' type='submit' outlined/>
             </div>
         </form>
+        {/* <button>
+            login with google
+        </button> */}
         <Logo src='/logo_dark.png'/>
 
     </ListStyle>
@@ -63,7 +66,7 @@ gap: 3em;
 form {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 0.5em;
 }
 padding: 2em;
 background: linear-gradient(90.41deg, rgba(255, 255, 255, 0.17) 1.53%, rgba(255, 255, 255, 0.1) 98.72%);

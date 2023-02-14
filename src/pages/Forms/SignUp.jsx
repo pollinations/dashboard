@@ -2,6 +2,7 @@ import SimpleForm from "../../components/SimpleForm";
 import React from "react"
 import { signUpwithEmail } from '../../supabase/user';
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function SignUpPage(){
 
