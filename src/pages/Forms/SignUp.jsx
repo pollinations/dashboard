@@ -1,6 +1,7 @@
 import SimpleForm from "../../components/SimpleForm";
 import React from "react"
 import { signUpwithEmail } from '../../supabase/user';
+import { Navigate } from "react-router-dom";
 
 export default function SignUpPage(){
 
@@ -8,6 +9,7 @@ const [ err, setErr ] = React.useState('')
 const [ success, setSuccess ] = React.useState('')
 const usernameRef = React.useRef()
 const passwordRef = React.useRef()
+const { user } = useAuth()
 
 async function onSubmit(e){
     e.preventDefault()
@@ -34,6 +36,6 @@ const SignUpProps = {
     err,
     success
 }
-
+if (user) return <Navigate to='/d'/>
 return <SimpleForm {...SignUpProps}/>
 }

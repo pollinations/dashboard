@@ -28,12 +28,12 @@ return <Wrapper>
     <TopBar/>
     <Routes>
 
-      
+
       <Route exact path='/' element={<FormsPage/>}>
         <Route exact path='/' element={<LoginPage/>}/>
         <Route exact path='/signuptest' element={<SignUpPage/>}/>
+        <Route exact path='/passwordupdate' element={<UpdatePassword/>}/>
       </Route>
-      <Route exact path='/passwordupdate' element={<UpdatePassword/>}/>
 
 
       <Route element={<ProtectedRoutes/>}>
