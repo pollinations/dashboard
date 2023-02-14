@@ -1,8 +1,9 @@
 import SimpleForm from "../../components/SimpleForm";
 import { signInWithEmail } from '../../supabase/user'
 import React from "react"
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import PasswordInput from "../../components/atoms/PasswordInput";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function LoginPage(){
 
@@ -10,6 +11,7 @@ const [ err, setErr ] = React.useState('')
 const usernameRef = React.useRef()
 const passwordRef = React.useRef()
 const navigate = useNavigate()
+const { user } = useAuth()
 
 
 async function onSubmit(e){
@@ -39,6 +41,8 @@ const LoginProps = {
     ],
     err,
 }
+
+if (user) return <Navigate to='/d'/>
 
 return <>
     <SimpleForm {...LoginProps} />

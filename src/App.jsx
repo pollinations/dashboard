@@ -18,42 +18,38 @@ import FormsPage from './pages/Forms'
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { fetchPreviousSession } from './supabase/user'
-
+import ProtectedRoute from './routes/protectedRoutes'
+import ProtectedRoutes from './routes/protectedRoutes'
 
 
 
 function App() {
-
-  const { user } = useAuth()
-
-  const { pathname } = useLocation();
-
-  if (pathname === '/passwordupdate') return <UpdatePassword/>
-
-
-  if (!user) return <Routes>
-    <Route exact path='/' element={<FormsPage/>}>
-      <Route exact path='/' element={<LoginPage/>}/>
-      <Route exact path='/signuptest' element={<SignUpPage/>}/>
-    </Route>
-    <Route path='*' element={<Navigate to='/'/>}/>
-  </Routes>
-
-  return <Wrapper>
+return <Wrapper>
     <TopBar/>
     <Routes>
-      <Route exact path='/' element={<Navigate to='/d'/>}/>
-      <Route path='/d' element={<AdminArea/>}>
-        <Route path='usage' element={<Chart/>}/>
-        <Route path='billing'>
-          <Route path='' element={<Billing />}/>
-          <Route path='history' element={<BillingHistory />}/>
-          <Route path='preferences' element={<BillingPreferences />}/>
-        </Route>
-        <Route path='token' element={<Token />}/>
-      </Route>
-      <Route path='*' element={<Navigate to='/'/>}/>
 
+      
+      <Route exact path='/' element={<FormsPage/>}>
+        <Route exact path='/' element={<LoginPage/>}/>
+        <Route exact path='/signuptest' element={<SignUpPage/>}/>
+      </Route>
+      <Route exact path='/passwordupdate' element={<UpdatePassword/>}/>
+
+
+      <Route element={<ProtectedRoutes/>}>
+        <Route path='/d' element={<AdminArea/>}>
+          <Route path='usage' element={<Chart/>}/>
+          <Route path='billing'>
+            <Route path='' element={<Billing />}/>
+            <Route path='history' element={<BillingHistory />}/>
+            <Route path='preferences' element={<BillingPreferences />}/>
+          </Route>
+          <Route path='token' element={<Token />}/>
+        </Route>
+      </Route>
+
+
+      <Route path='*' element={<Navigate to='/'/>}/>
     </Routes>
     
   </Wrapper>

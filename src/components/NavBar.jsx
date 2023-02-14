@@ -14,19 +14,25 @@ import { SocialLinks } from './Social'
 import { MAIN_NAV_ROUTES, USER_NAV_ROUTES } from '../routes/publicRoutes'
 // import { useAuth } from '../hooks/useAuth'
 import LoggedUser from './LoggedUser'
+import { useAuth } from '../hooks/useAuth';
 
 
 
 const TopBar = ({ navRoutes }) => {
 
   const drawerState = React.useState(false);
+  const { user } = useAuth()
   const location = useLocation()
   // const { user } = useAuth()
   // const isUser = (location.pathname === '/d');
 
   return <OuterContainer>
       <TopContainer>
-          <UserNav drawerState={drawerState} navRoutes={USER_NAV_ROUTES}/>
+          {
+            user ? 
+            <UserNav drawerState={drawerState} navRoutes={USER_NAV_ROUTES}/>
+            : <></>
+          }
       </TopContainer>
 
       <MobileMenu navRoutes={MAIN_NAV_ROUTES} drawerState={drawerState}/>
