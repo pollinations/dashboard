@@ -20,6 +20,7 @@ import React from 'react'
 import { fetchPreviousSession } from './supabase/user'
 import ProtectedRoute from './routes/protectedRoutes'
 import ProtectedRoutes from './routes/protectedRoutes'
+import ConfirmEmail from './pages/Forms/ConfirmEmail'
 
 
 
@@ -33,6 +34,7 @@ return <Wrapper>
         <Route exact path='/' element={<LoginPage/>}/>
         <Route exact path='/signuptest' element={<SignUpPage/>}/>
         <Route exact path='/passwordupdate' element={<UpdatePassword/>}/>
+        <Route exact path='/emailconfirmation' element={<ConfirmEmail/>}/>
       </Route>
 
 

@@ -1,7 +1,7 @@
 import SimpleForm from "../../components/SimpleForm";
 import React from "react"
 import { signUpwithEmail } from '../../supabase/user';
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 export default function SignUpPage(){
@@ -11,6 +11,7 @@ const [ success, setSuccess ] = React.useState('')
 const usernameRef = React.useRef()
 const passwordRef = React.useRef()
 const { user } = useAuth()
+const navigate = useNavigate()
 
 async function onSubmit(e){
     e.preventDefault()
@@ -22,8 +23,9 @@ async function onSubmit(e){
         username: usernameRef.current.value,
         password: passwordRef.current.value
     });
+    console.log(data, error)
     // Success
-    if (data.user !== null) setSuccess('Confirm your email blabla...')
+    if (data.user !== null) navigate('/emailconfirmation')
     // Fail
     setErr(error?.message);
 }
