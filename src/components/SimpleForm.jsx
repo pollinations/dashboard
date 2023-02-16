@@ -34,15 +34,11 @@ return <Style>
                 <Button children='Continue' type='submit' outlined/>
             </div>
         </form>
-        {/* <button>
-            login with google
-        </button> */}
         <Logo src='/logo_dark.png'/>
 
     </ListStyle>
 </Style>
 }
-
 
 const SuccessFeedback = styled.p`
 color: lime;

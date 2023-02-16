@@ -1,17 +1,23 @@
 import styled from '@emotion/styled'
+import { useNavigate } from 'react-router-dom';
 import { Colors, MOBILE_BREAKPOINT } from "../styles/global";
+import Button from './Button'
 
 export default function SimpleInfo(props){
+
+const navigate = useNavigate()
 
 const { body, title } = props;
 
 return <Style>
     <ListStyle style={{width: 300}}>
         <div>
-        <TitleStyle children={title}/>
-        <div style={{width: '100%', height: 20}}/>
-        <BodyStyle children={body}/>
-
+            <TitleStyle children={title}/>
+            <div style={{width: '100%', height: 20}}/>
+            <BodyStyle children={body}/>
+        </div>
+        <div>
+            <Button children='Login' outlined onClick={() => navigate('/')}/>
         </div>
         
         <Logo src='/logo_dark.png'/>
@@ -19,9 +25,10 @@ return <Style>
     </ListStyle>
 </Style>
 }
+
+
 const Logo = styled.img`
 width: 150px;
-// padding-top: 6em;
 `
 
 const TitleStyle = styled.h1`
@@ -32,7 +39,6 @@ color: ${Colors.offblack};
 font-style: normal;
 font-weight: 700;
 font-size: 33px !important;
-margin: 1em 0;
 `
 const BodyStyle = styled.p`
 font-family: 'Uncut-Sans-Variable';
@@ -43,14 +49,14 @@ line-height: 30px;
 margin: 0;
 /* gray 1 */
 
-color: ${Colors.gray1};
+color: ${Colors.offblack};
 `
 
 const ListStyle = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-gap: 3em;
+gap: 1em;
 
 form {
     display: flex;
