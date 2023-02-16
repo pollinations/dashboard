@@ -22,6 +22,7 @@ export default function UserToken(){
         mutationFn: () => createToken(token),
         onSuccess: () => queryClient.invalidateQueries({ queryKey: ['user_tokens'] })
     })
+    console.log(token)
 
 
     return <>
@@ -36,7 +37,7 @@ export default function UserToken(){
                 }
             </TokensBoxStyle>
             :
-            <h2>
+            <h2 style={{margin: '2em 0'}}>
                 <i> You currently do not have any API keys. </i>
             </h2>
         }
@@ -91,8 +92,8 @@ const ContentStyle = styled.p`
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
-    line-height: 22px;
-    margin: 0;
+    line-height: 25px;
+    margin: 1em 0;
     /* gray 1 */
     color: ${Colors.offwhite};
 `

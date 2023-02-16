@@ -4,6 +4,7 @@ import React from "react"
 import { Navigate, useNavigate } from "react-router-dom";
 import PasswordInput from "../../components/atoms/PasswordInput";
 import { useAuth } from "../../hooks/useAuth";
+import { SocialLinks } from "../../components/Social";
 
 export default function LoginPage(){
 
@@ -40,6 +41,7 @@ const LoginProps = {
       }
     ],
     err,
+    // extras: <SocialLogin/>
 }
 
 if (user) return <Navigate to='/d'/>
@@ -47,4 +49,11 @@ if (user) return <Navigate to='/d'/>
 return <>
     <SimpleForm {...LoginProps} />
 </>
+}
+
+
+const SocialLogin = () => {
+  return <div>
+    <SocialLinks small hideOnMobile gap='8px'/>
+  </div>
 }

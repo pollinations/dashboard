@@ -8,7 +8,7 @@ import Button from "./Button";
 
 export default function SimpleForm(props){
 
-const { fields, err, title, onSubmit } = props;
+const { fields, err, title, onSubmit, extras } = props;
 
 return <Style>
     <ListStyle style={{width: 300}}>
@@ -34,9 +34,9 @@ return <Style>
                 <Button children='Continue' type='submit' outlined/>
             </div>
         </form>
-        {/* <button>
-            login with google
-        </button> */}
+        {
+            extras ? extras : <></>
+        }
         <Logo src='/logo_dark.png'/>
 
     </ListStyle>

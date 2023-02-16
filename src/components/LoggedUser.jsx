@@ -10,6 +10,8 @@ const LoggedUser = ({ user }) => {
     
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+
+    console.log(user)
  
     return <Container>
         <Avatar onClick={e => setAnchorEl(e.currentTarget)} src={user?.user_metadata?.avatar_url}/>
@@ -18,12 +20,12 @@ const LoggedUser = ({ user }) => {
             <MenuItem onClick={() => {
                 setAnchorEl(null)
                 navigate("/d")
-            }}> Dashboard </MenuItem>
+            }}> API Tokens </MenuItem>
 
             <MenuItem onClick={() => {
                 setAnchorEl(null)
-                navigate("/passwordupdate")
-            }}> Password Update </MenuItem>
+                navigate("/u")
+            }}> Usage </MenuItem>
 
             <MenuItem onClick={() => {
                 setAnchorEl(null)

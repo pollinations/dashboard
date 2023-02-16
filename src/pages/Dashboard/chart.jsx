@@ -241,6 +241,7 @@ const Chart = props =>{
 export default Chart
 
 const Style = styled.div`
+
 width: 100%;
 height: 100%;
 max-height: 50vh;

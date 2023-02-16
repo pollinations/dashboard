@@ -30,7 +30,7 @@ const TopBar = ({ navRoutes }) => {
       <TopContainer>
           {
             user ? 
-            <UserNav drawerState={drawerState} navRoutes={USER_NAV_ROUTES}/>
+            <UserNav drawerState={drawerState} navRoutes={USER_NAV_ROUTES} user={user}/>
             : <></>
           }
       </TopContainer>
@@ -51,8 +51,6 @@ const PublicNav = ({ navRoutes, drawerState }) => <NavBarStyle>
           marginLeft: '1em' }}>
       <Logo size='150px' small='150px' margin='0' />  
     </NavLink>
-
-    {/* <NavigationItems navRoutes={navRoutes}/> */}
   </div>
 
   <SocialLinks small hideOnMobile gap='8px'/>
@@ -64,7 +62,7 @@ const PublicNav = ({ navRoutes, drawerState }) => <NavBarStyle>
   </MenuButton>
 </NavBarStyle>;
 
-const UserNav = ({ navRoutes, drawerState }) => <NavBarStyle> 
+const UserNav = ({ user, drawerState }) => <NavBarStyle> 
 
   <NavLink to='/' style={{ 
       padding: 0, 
@@ -76,7 +74,7 @@ const UserNav = ({ navRoutes, drawerState }) => <NavBarStyle>
     <Logo size='150px' small='150px' margin='0' />  
   </NavLink>
   
-  <LoggedUser />
+  <LoggedUser user={user} />
 
 <MenuButton>
   <IconButton onClick={()=>drawerState[1](true)} >
