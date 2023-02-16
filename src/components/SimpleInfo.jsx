@@ -5,8 +5,7 @@ export default function SimpleInfo(props){
 
 const { body, title } = props;
 
-return <Style>
-    <ListStyle style={{width: 300}}>
+return <>
         <div>
         <TitleStyle children={title}/>
         <div style={{width: '100%', height: 20}}/>
@@ -15,13 +14,11 @@ return <Style>
         </div>
         
         <Logo src='/logo_dark.png'/>
-
-    </ListStyle>
-</Style>
+</>
 }
 const Logo = styled.img`
 width: 150px;
-// padding-top: 6em;
+padding-top: 6em;
 `
 
 const TitleStyle = styled.h1`
