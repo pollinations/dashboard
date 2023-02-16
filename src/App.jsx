@@ -13,6 +13,7 @@ import ProtectedRoutes from './routes/protectedRoutes'
 import ConfirmEmail from './pages/Forms/ConfirmEmail'
 import DashboardWrapper from './pages/DashboardWrapper'
 import UserToken from './pages/Dashboard/token'
+import FormsWrapper from './pages/FormsWrapper'
 
 
 
@@ -21,7 +22,7 @@ return <Wrapper>
     <TopBar/>
     <Routes>
 
-      <Route exact path='/' element={<FormsPage/>}>
+      <Route element={<FormsWrapper/>}>
         <Route exact path='/' element={<LoginPage/>}/>
         <Route exact path='/signuptest' element={<SignUpPage/>}/>
         <Route exact path='/passwordupdate' element={<UpdatePassword/>}/>
