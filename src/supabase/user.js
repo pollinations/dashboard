@@ -15,16 +15,21 @@ export async function signOut(){
 }
 
 // Ex: handleSocialLogin("facebook", "https://pollinations.ai")
-export async function handleSocialLogin(provider, redirectTo = "localhost:3000/") {
+export async function handleSocialLogin(provider) {
     return await supabase.auth.signInWithOAuth({
         provider: provider,
         options: {
-            redirectTo: "localhost:3000/"
+            redirectTo: "https://glittery-bombolone-af5d34.netlify.app/"
         }
-    }, 
-    {
-        redirectTo: window.location.origin + redirectTo
     })
+}
+
+export async function signInWithSocial(provider){
+
+    return await supabase.auth.signInWithSocial({
+        provider: provider
+    })
+
 }
 
 export async function signInWithEmail(user) {
@@ -39,10 +44,7 @@ export async function signInWithEmail(user) {
     return await supabase.auth.signInWithPassword({
       email: user?.username,
       password: user?.password,
-    },
-    {options: {
-        redirectTo: "localhost:3000/"
-    }})
+    })
 }
 export async function signUpwithEmail(user) {
 

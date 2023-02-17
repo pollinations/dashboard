@@ -23,7 +23,7 @@ async function onSubmit(e){
         username: usernameRef.current.value,
         password: passwordRef.current.value
     });
-    console.log(data, error)
+
     // Success
     if (data.user !== null) navigate('/emailconfirmation')
     // Fail

@@ -10,8 +10,6 @@ const LoggedUser = ({ user }) => {
     
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-
-    console.log(user)
  
     return <Container>
         <Avatar onClick={e => setAnchorEl(e.currentTarget)} src={user?.user_metadata?.avatar_url}/>

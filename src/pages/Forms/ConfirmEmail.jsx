@@ -1,10 +1,11 @@
 import SimpleForm from "../../components/SimpleForm";
 import { BackGroundVideo, Colors } from '../../styles/global';
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import React from "react";
 import { updatePassword } from "../../supabase/user";
 import SimpleInfo from "../../components/SimpleInfo";
 import styled from '@emotion/styled'
+import { useAuth } from "../../hooks/useAuth";
 
 export default function ConfirmEmail(){
 
@@ -12,6 +13,7 @@ export default function ConfirmEmail(){
     const newPasswordRef = React.useRef();
     const newPasswordConfirmRef = React.useRef();
     const navigate = useNavigate()
+    const { user } = useAuth()
 
     async function onSubmit(e){
         e.preventDefault()
@@ -37,7 +39,7 @@ export default function ConfirmEmail(){
         ],
         err,
     }
-
+    if (user) return <Navigate to='/d'/>
     return <HeaderStyle>
         <SimpleInfo 
             title='Almost there'

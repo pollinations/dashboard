@@ -22,8 +22,6 @@ export default function UserToken(){
         mutationFn: () => createToken(token),
         onSuccess: () => queryClient.invalidateQueries({ queryKey: ['user_tokens'] })
     })
-    console.log(token)
-
 
     return <>
         <InfoBody />

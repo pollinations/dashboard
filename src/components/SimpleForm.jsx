@@ -26,9 +26,13 @@ return <>
                 variant="standard" /> )
         }
         <ErrorFeedback children={err}/>
-        <div>
+        {
+            onSubmit ? 
+            <div>
             <Button children='Continue' type='submit' outlined/>
-        </div>
+            </div>
+            : <></>
+        }
     </form>
     {
         extras ? extras : <></>
