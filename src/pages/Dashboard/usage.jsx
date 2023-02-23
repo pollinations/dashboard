@@ -1,11 +1,14 @@
 import styled from '@emotion/styled';
 import { ResponsiveBar } from '@nivo/bar'
 import { fetchUserData } from '../../supabase/user';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Chart = props =>{
   const [data, setData] = useState(null)
-  fetchUserData("pollen", "end_time").then(setData)
+    useEffect(() => {
+        fetchUserData("pollen", "end_time").then(setData)
+        return undefined;
+    }, [])
   return (<Style>
       
     Usage: {data && Object.keys(data?.data).length}

@@ -15,7 +15,8 @@ export async function signOut(){
 }
 
 // Ex: handleSocialLogin("facebook", "https://pollinations.ai")
-export async function handleSocialLogin(provider, redirectTo="http://127.0.0.1:5173/") { //"https://glittery-bombolone-af5d34.netlify.app/") {
+export async function handleSocialLogin(provider, redirectTo=null) { 
+    if (redirectTo == null) redirectTo = window.location.origin
     return await supabase.auth.signInWithOAuth({
         provider: provider,
         options: {
