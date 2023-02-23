@@ -1,7 +1,7 @@
 import SimpleForm from "../../components/SimpleForm";
 import { handleSocialLogin, signInWithEmail } from '../../supabase/user'
 import React from "react"
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import PasswordInput from "../../components/atoms/PasswordInput";
 import { useAuth } from "../../hooks/useAuth";
 import { SocialLinks } from "../../components/Social";
@@ -11,6 +11,11 @@ export default function SocialLoginPage(){
 const [ err, setErr ] = React.useState('')
 const navigate = useNavigate()
 const { user } = useAuth()
+
+// check if redirectTo param is present
+const { redirectTo } = useParams()
+
+
 
 const SocialProviders = [
     {
@@ -35,7 +40,7 @@ async function handleLogin(e, provider){
     setErr('')
 
     // handleSignIn
-    let { data, error } = await handleSocialLogin(provider);
+    let { data, error } = await handleSocialLogin(provider, redirectTo);
     console.log(data, error)
     // Success
     // if (data?.user !== null) navigate('/d');
