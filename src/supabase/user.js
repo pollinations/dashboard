@@ -15,11 +15,11 @@ export async function signOut(){
 }
 
 // Ex: handleSocialLogin("facebook", "https://pollinations.ai")
-export async function handleSocialLogin(provider) {
+export async function handleSocialLogin(provider, redirectTo="http://127.0.0.1:5173/") { //"https://glittery-bombolone-af5d34.netlify.app/") {
     return await supabase.auth.signInWithOAuth({
         provider: provider,
         options: {
-            redirectTo: "https://glittery-bombolone-af5d34.netlify.app/"
+            redirectTo
         }
     })
 }

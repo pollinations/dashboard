@@ -6,7 +6,7 @@ import TopBar from './components/NavBar'
 import LoginPage from './pages/Forms/Login'
 import SignUpPage from './pages/Forms/SignUp'
 
-import Chart from './pages/Dashboard/chart'
+import Usage from './pages/Dashboard/usage'
 import UpdatePassword from './pages/Forms/UpdatePassword'
 import FormsPage from './pages/Forms'
 import ProtectedRoutes from './routes/protectedRoutes'
@@ -24,7 +24,7 @@ return <Wrapper>
     <Routes>
 
       <Route element={<FormsWrapper/>}>
-        <Route exact path='/' element={<LoginPage/>}/>
+        <Route exact path='/' element={<SocialLoginPage/>}/>
         <Route exact path='/social' element={<SocialLoginPage/>}/>
         <Route exact path='/signuptest' element={<SignUpPage/>}/>
         <Route exact path='/passwordupdate' element={<UpdatePassword/>}/>
@@ -34,7 +34,7 @@ return <Wrapper>
       <Route element={<ProtectedRoutes/>}>
         <Route element={<DashboardWrapper/>}>
           <Route exact path='/d' element={<UserToken/>}/>
-          <Route exact path='/u' element={<Chart/>}/>
+          <Route exact path='/u' element={<Usage/>}/>
         </Route>
       </Route>
 

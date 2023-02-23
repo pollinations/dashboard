@@ -230,7 +230,6 @@ const MyResponsiveBar = ({ data /* see data tab */ }) => (
 const Chart = props =>{
   return (<Style>
       
-    
       <MyResponsiveBar data={mockData}/>
       
 
