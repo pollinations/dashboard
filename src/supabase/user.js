@@ -74,9 +74,15 @@ export async function updatePassword(new_password) {
 }
 
 export async function fetchUserData(table, column) {
-    return await supabase
+    // get uuid. we should handle this with RLS in the future
+    const { data } = await getUser()
+    const uuid = data?.user?.id
+
+    return (await supabase
         .from(table)
         .select(column)
+        .eq('user_id', uuid)).data;
+
 }
 
 export async function fetchPreviousSession(){

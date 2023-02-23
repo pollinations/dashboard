@@ -11,7 +11,7 @@ const Chart = props =>{
     }, [])
   return (<Style>
       
-    Usage: {data && Object.keys(data?.data).length}
+    Usage: {data?.length}
 
 </Style>)
 };
