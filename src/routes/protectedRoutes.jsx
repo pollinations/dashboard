@@ -3,7 +3,9 @@ import { useAuth } from "../hooks/useAuth"
 
 const ProtectedRoutes = ({ children }) => {
 
-    const { user } = useAuth()
+    const { user, fetchingSession } = useAuth()
+    
+    if (fetchingSession) return <div>Loading...</div>
 
     return user ? <Outlet/> : <Navigate to='/'/>
 }   

@@ -11,7 +11,7 @@ function AuthProvider({ children }) {
 
     const [ user, setUser ] = React.useState(null)
     const [ token, setToken ] = React.useState(null)
-
+    const [ fetchingSession, setFetchingSession ] = React.useState(true)
 
     // const test = useQuery(
     //   queryKey: 'auth',
@@ -26,6 +26,7 @@ function AuthProvider({ children }) {
         const { data } = await supabase.auth.getSession()
         setUser(data?.session?.user ?? null)
         setToken(data?.session?.access_token)
+        setFetchingSession(false)
       }
       fetchPreviousSession()
 
@@ -57,7 +58,8 @@ function AuthProvider({ children }) {
       getUser,
       getCurrentUser,
       handleSignOut,  
-      token,    
+      token,
+      fetchingSession    
       }}>
       {children}
     </AuthContext.Provider>
