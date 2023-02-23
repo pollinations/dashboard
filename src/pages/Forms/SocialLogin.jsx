@@ -13,7 +13,7 @@ const navigate = useNavigate()
 const { user } = useAuth()
 
 // check if redirectTo param is present
-const { redirectTo } = useParams()
+const { redirect } = useParams()
 
 
 
@@ -40,7 +40,7 @@ async function handleLogin(e, provider){
     setErr('')
 
     // handleSignIn
-    let { data, error } = await handleSocialLogin(provider, redirectTo);
+    let { data, error } = await handleSocialLogin(provider, redirect);
     console.log(data, error)
     // Success
     // if (data?.user !== null) navigate('/d');
