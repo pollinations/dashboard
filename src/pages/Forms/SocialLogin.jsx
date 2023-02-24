@@ -1,11 +1,12 @@
 import SimpleForm from "../../components/SimpleForm";
 import { handleSocialLogin, signInWithEmail } from '../../supabase/user'
 import React from "react"
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import PasswordInput from "../../components/atoms/PasswordInput";
 import { useAuth } from "../../hooks/useAuth";
 import { SocialLinks } from "../../components/Social";
 import Button from '../../components/Button'
+import sleep from 'await-sleep'
 export default function SocialLoginPage(){
 
 const [ err, setErr ] = React.useState('')
@@ -13,9 +14,11 @@ const navigate = useNavigate()
 const { user } = useAuth()
 
 // check if redirectTo param is present
-const { redirect } = useParams()
+const [params] = useSearchParams()
 
+const redirect = params.get("redirect")
 
+console.log("got redirect param", redirect, user)
 
 const SocialProviders = [
     {
@@ -40,6 +43,8 @@ async function handleLogin(e, provider){
     setErr('')
 
     // handleSignIn
+    console.log("redirect", redirect)
+
     let { data, error } = await handleSocialLogin(provider, redirect);
     console.log(data, error)
     // Success
@@ -56,7 +61,9 @@ const LoginProps = {
     // extras: <SocialLogin/>
 }
 
-if (user) return <Navigate to='/d'/>
+if (user && !redirect) { 
+    return <Navigate to='/d'/>
+}
 
 return <>
     <SimpleForm {...LoginProps} />
