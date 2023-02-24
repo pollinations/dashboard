@@ -29,7 +29,7 @@ function AuthProvider({ children }) {
         setFetchingSession(false)
       }
       fetchPreviousSession()
-
+      console.log("listening to auth state change")
       // Listen for changes on auth state (logged in, signed out, etc.)
       const { data: listener } = supabase.auth.onAuthStateChange(
         async (event, session) => {
