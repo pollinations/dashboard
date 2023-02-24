@@ -18,8 +18,6 @@ const [params] = useSearchParams()
 
 const redirect = params.get("redirect")
 
-console.log("got redirect param", redirect, user)
-
 const SocialProviders = [
     {
         id: 'discord',
@@ -41,9 +39,6 @@ async function handleLogin(e, provider){
 
     // Clear error field
     setErr('')
-
-    // handleSignIn
-    console.log("redirect", redirect)
 
     let { data, error } = await handleSocialLogin(provider, redirect);
     console.log(data, error)

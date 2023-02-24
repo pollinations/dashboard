@@ -25,13 +25,6 @@ export async function handleSocialLogin(provider, redirectTo=null) {
     })
 }
 
-// export async function signInWithSocial(provider){
-
-//     return await supabase.auth.signInWithSocial({
-//         provider: provider
-//     })
-
-// }
 
 export async function signInWithEmail(user) {
 
