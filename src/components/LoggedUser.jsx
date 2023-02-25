@@ -28,6 +28,7 @@ const LoggedUser = ({ user, appRoutes }) => {
                 appRoutes.map( route => {
                     return <MenuItem  onClick={() => {
                         setAnchorEl(null)
+                        console.log("navigate to", route.to)
                         navigate(route.to)
                     }}> <b>{route.label}</b> </MenuItem>
                 

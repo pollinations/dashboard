@@ -56,9 +56,11 @@ const LoginProps = {
     // extras: <SocialLogin/>
 }
 
-if (user && !redirect) { 
+if (user) { 
+    if (redirect) return <Navigate to={redirect}/>
     return <Navigate to='/d'/>
 }
+
 
 return <>
     <SimpleForm {...LoginProps} />
