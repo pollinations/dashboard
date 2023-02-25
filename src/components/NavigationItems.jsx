@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { MOBILE_BREAKPOINT } from '../styles/global'
 
 const NavigationItems = ({ navRoutes, column, margin, gap, ...rest }) => {
-
+    
     const nav_items = Object.keys(navRoutes).map((key) => (
         <RouterLink key={key} to={navRoutes[key].to}>
             {navRoutes[key].label}

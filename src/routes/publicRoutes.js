@@ -24,9 +24,10 @@ export const MARKDOWN_ROUTES = [
 ]
 
 export const APP_ROUTES = [
-    { label: 'Dreamachine', to: 'https://dreamachine.pollinations.ai', id: 'dreamachine' },
+    { label: 'Dreamachine', to: `${location.origin}/login?redirect=${encodeURI("https://dreamachine.pollinations.ai")}`, id: 'dreamachine' },
 ]
 
+console.log(APP_ROUTES)
 export const USER_NAV_ROUTES = [
     { label: 'Usage', to: '/usage', id: 'usage' },
     { label: 'API Token', to: '/api_token', id: 'api_token' }
