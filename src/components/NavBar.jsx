@@ -30,12 +30,12 @@ const TopBar = ({ navRoutes }) => {
       <TopContainer>
           {
             user ? 
-            <UserNav drawerState={drawerState} navRoutes={USER_NAV_ROUTES} user={user}/>
+            <UserNav drawerState={drawerState} appRoutes={APP_ROUTES} user={user}/>
             : <></>
           }
       </TopContainer>
 
-      <MobileMenu navRoutes={APP_ROUTES} drawerState={drawerState}/>
+      {/* <MobileMenu navRoutes={APP_ROUTES} drawerState={drawerState}/> */}
       
     </OuterContainer>
   };
@@ -74,7 +74,7 @@ const UserNav = ({ user, drawerState }) => <NavBarStyle>
     <Logo size='150px' small='150px' margin='0' />  
   </NavLink>
   
-  <LoggedUser user={user} />
+  <LoggedUser user={user} appRoutes={APP_ROUTES}/>
 
 <MenuButton>
   <IconButton onClick={()=>drawerState[1](true)} >
@@ -149,12 +149,11 @@ const TopContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-
+  @media (max-width: ${MOBILE_BREAKPOINT}){
+    padding: 0;
+  }
   
- `
-// @media (max-width: ${MOBILE_BREAKPOINT}){
-//   padding: 0;
-// }
+`
 
 const NavBarStyle = styled.div`
   width: 100%;
@@ -172,18 +171,15 @@ const NavBarStyle = styled.div`
     color: #fdfdfd !important;  
   }
   padding: 1% 0;
-
+  @media (max-width: ${MOBILE_BREAKPOINT}){
+    grid-template-areas: "logo nav mobilebutton social";
+  }
 `
-// @media (max-width: ${MOBILE_BREAKPOINT}){
-//   grid-template-areas: "logo nav mobilebutton social";
-// }
-
 const MenuButton = styled.div`
 grid-area: mobilebutton;
 justify-self: flex-end;
+@media (min-width: ${MOBILE_BREAKPOINT}){
+  display: none;
+}
 `
-
-// @media (min-width: ${MOBILE_BREAKPOINT}){
-//   display: none;
-// }
 export default TopBar

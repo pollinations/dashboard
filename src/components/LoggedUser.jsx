@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import styled from '@emotion/styled'
 
-const LoggedUser = ({ user }) => {
+const LoggedUser = ({ user, appRoutes }) => {
     const { handleSignOut } = useAuth()
     const navigate = useNavigate()
     
@@ -24,7 +24,15 @@ const LoggedUser = ({ user }) => {
                 setAnchorEl(null)
                 navigate("/u")
             }}> Usage </MenuItem>
-
+            {
+                appRoutes.map( route => {
+                    return <MenuItem  onClick={() => {
+                        setAnchorEl(null)
+                        navigate(route.to)
+                    }}> <b>{route.label}</b> </MenuItem>
+                
+                })
+            }
             <MenuItem onClick={() => {
                 setAnchorEl(null)
                 handleSignOut()
