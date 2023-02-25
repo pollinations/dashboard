@@ -24,11 +24,11 @@ return <Wrapper>
     <Routes>
 
       <Route element={<FormsWrapper/>}>
-        <Route exact path='/' element={<SocialLoginPage/>}/>
-        <Route exact path='/social' element={<SocialLoginPage/>}/>
-        <Route exact path='/signuptest' element={<SignUpPage/>}/>
+        {/* <Route exact path='/' element={<SocialLoginPage/>}/> */}
+        <Route exact path='/login' element={<SocialLoginPage/>}/>
+        {/* <Route exact path='/signuptest' element={<SignUpPage/>}/>
         <Route exact path='/passwordupdate' element={<UpdatePassword/>}/>
-        <Route exact path='/emailconfirmation' element={<ConfirmEmail/>}/>
+        <Route exact path='/emailconfirmation' element={<ConfirmEmail/>}/> */}
       </Route>
 
       <Route element={<ProtectedRoutes/>}>
@@ -38,7 +38,7 @@ return <Wrapper>
         </Route>
       </Route>
 
-      <Route path='*' element={<Navigate to='/'/>}/>
+      <Route path='*' element={<Navigate to='/login'/>}/>
     </Routes>
     
   </Wrapper>
