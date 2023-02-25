@@ -12,6 +12,7 @@ function AuthProvider({ children }) {
     const [ user, setUser ] = React.useState(null)
     const [ token, setToken ] = React.useState(null)
     const [ fetchingSession, setFetchingSession ] = React.useState(true)
+    const [ session, setSession ] = React.useState(null)
 
     // const test = useQuery(
     //   queryKey: 'auth',
@@ -25,6 +26,7 @@ function AuthProvider({ children }) {
       async function fetchPreviousSession(callback){
         const { data } = await supabase.auth.getSession()
         setUser(data?.session?.user ?? null)
+        setSession(data?.session)
         setToken(data?.session?.access_token)
         setFetchingSession(false)
       }
@@ -35,6 +37,7 @@ function AuthProvider({ children }) {
         async (event, session) => {
           console.log("authstatechange", session)
           setUser(session?.user ?? null)
+          
         }
       )
     
@@ -50,7 +53,7 @@ function AuthProvider({ children }) {
       setUser(null)
     }
 
-
+    
 
     
 
@@ -60,7 +63,8 @@ function AuthProvider({ children }) {
       getCurrentUser,
       handleSignOut,  
       token,
-      fetchingSession    
+      fetchingSession,
+      session    
       }}>
       {children}
     </AuthContext.Provider>

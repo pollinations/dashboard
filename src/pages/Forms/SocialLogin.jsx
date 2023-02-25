@@ -11,7 +11,7 @@ export default function SocialLoginPage(){
 
 const [ err, setErr ] = React.useState('')
 const navigate = useNavigate()
-const { user } = useAuth()
+const { user,session } = useAuth()
 
 // check if redirectTo param is present
 const [params] = useSearchParams()
@@ -57,7 +57,10 @@ const LoginProps = {
 }
 
 if (user) { 
-    if (redirect) return <Navigate to={redirect}/>
+    // get provider
+    console.log("redirect", redirect)
+    if (redirect)
+        window.location.href =  urlWithAuthToken(redirect, session)
     return <Navigate to='/d'/>
 }
 
@@ -81,3 +84,9 @@ const SOCIAL_LINKS = {
       url: 'https://www.github.com/pollinations'
     },
   }
+
+export function urlWithAuthToken(baseURL, session) {
+  if (!session)
+    return baseURL;
+  return `${baseURL}#access_token=${session.access_token}&refresh_token=${session.refresh_token}&expires_in=${session.expires_in}&token_type=${session.token_type}&user_id=${session.user?.id}&user_email=${session.user?.email}&user_role=${session.user?.role}&user_action_link=${session.user?.action_link}`;
+}
