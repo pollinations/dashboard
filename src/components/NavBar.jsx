@@ -172,15 +172,18 @@ const NavBarStyle = styled.div`
     color: #fdfdfd !important;  
   }
   padding: 1% 0;
-  @media (max-width: ${MOBILE_BREAKPOINT}){
-    grid-template-areas: "logo nav mobilebutton social";
-  }
+
 `
+// @media (max-width: ${MOBILE_BREAKPOINT}){
+//   grid-template-areas: "logo nav mobilebutton social";
+// }
+
 const MenuButton = styled.div`
 grid-area: mobilebutton;
 justify-self: flex-end;
-@media (min-width: ${MOBILE_BREAKPOINT}){
-  display: none;
-}
 `
+
+// @media (min-width: ${MOBILE_BREAKPOINT}){
+//   display: none;
+// }
 export default TopBar
