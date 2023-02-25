@@ -23,6 +23,10 @@ export const MARKDOWN_ROUTES = [
     ROUTES.impressum
 ]
 
+export const APP_ROUTES = [
+    { label: 'Dreamachine', to: 'https://dreamachine.pollinations.ai', id: 'dreamachine' },
+]
+
 export const USER_NAV_ROUTES = [
     { label: 'Usage', to: '/usage', id: 'usage' },
     { label: 'API Token', to: '/api_token', id: 'api_token' }

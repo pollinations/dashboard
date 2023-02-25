@@ -11,7 +11,7 @@ import MobileMenuIcon from '/menuIcon.svg'
 import Logo from './Logo'
 import NavigationItems from "./NavigationItems"
 import { SocialLinks } from './Social'
-import { MAIN_NAV_ROUTES, USER_NAV_ROUTES } from '../routes/publicRoutes'
+import { APP_ROUTES, MAIN_NAV_ROUTES, USER_NAV_ROUTES } from '../routes/publicRoutes'
 // import { useAuth } from '../hooks/useAuth'
 import LoggedUser from './LoggedUser'
 import { useAuth } from '../hooks/useAuth';
@@ -35,7 +35,7 @@ const TopBar = ({ navRoutes }) => {
           }
       </TopContainer>
 
-      <MobileMenu navRoutes={MAIN_NAV_ROUTES} drawerState={drawerState}/>
+      <MobileMenu navRoutes={APP_ROUTES} drawerState={drawerState}/>
       
     </OuterContainer>
   };
