@@ -149,11 +149,12 @@ const TopContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  @media (max-width: ${MOBILE_BREAKPOINT}){
-    padding: 0;
-  }
+
   
-`
+ `
+// @media (max-width: ${MOBILE_BREAKPOINT}){
+//   padding: 0;
+// }
 
 const NavBarStyle = styled.div`
   width: 100%;
